@@ -1,6 +1,4 @@
 --1 create table for employees
-DROP TABLE IF EXISTs employees 
-
 create table employees(
 	emp_no INT primary key NOT NULL, 
 	emp_title_id VARCHAR (50) NOT NULL,
@@ -27,7 +25,6 @@ create table salaries(
 select * from salaries;
 
 --3 create table for titles
-DROP TABLE IF EXISTS titles;
 create table titles(
 	title_id VARCHAR (50) primary key NOT NULL, 
 	title VARCHAR (50) NOT NULL
@@ -36,8 +33,6 @@ create table titles(
 select * from titles 
 
 --4 create table for departments
-DROP TABLE IF EXISTS departments;
-
 create table departments(
 	dept_no VARCHAR(50)primary key NOT NULL, 
 	dept_name VARCHAR (50) NOT NULL
@@ -46,8 +41,6 @@ create table departments(
 select * from departments;
 
 --5 create table for the department managers (dept_manager)
-DROP TABLE IF EXISTS dept_manager
-
 CREATE TABLE dept_manager (
   dept_no VARCHAR(50) NOT NULL,
   emp_no INT NOT NULL,
@@ -57,11 +50,7 @@ CREATE TABLE dept_manager (
 select * from dept_manager
 
 --6 create table for all department employees (dept_emp)
--- ERROR: duplicate key value violates unique constraint "dept_emp_pkey" 
---DETAIL: Key (emp_no)=(10010) already exists.
---CONTEXT: COPY dept_emp, line 12, had to make both colums primary keys 
-
-DROP TABLE IF EXISTS dept_emp
+--I had to make the primary key a combination of emp_no and dept_no, That way it will be unique. 
 create table dept_emp (
 	emp_no INT NOT NULL,
 	dept_no VARCHAR (50) NOT NULL,
